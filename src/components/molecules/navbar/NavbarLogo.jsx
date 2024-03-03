@@ -7,7 +7,14 @@ export function NavbarLogo() {
     <nav className="navbar-start">
       <NavbarToggle />
       <Link href="/">
-        <Image src="/Logo.svg" alt="logo" width={123} height={30} />
+        <Image
+          priority
+          src="/Logo.svg"
+          alt="logo"
+          width={123}
+          height={30}
+          className="w-[123px] h-[30px]"
+        />
       </Link>
     </nav>
   );

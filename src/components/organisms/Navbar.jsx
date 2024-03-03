@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { NavbarFeature, NavbarLogo, NavbarMenu } from '../molecules/navbar';
+import { NavbarFeature, NavbarLogo, NavbarMenu } from '../molecules';
 
 export function Navbar() {
   const [isSticky, setSticky] = useState(false);

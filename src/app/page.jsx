@@ -1,7 +1,9 @@
+import { Hero } from '@/components/organisms';
+
 export default function Home() {
   return (
     <div>
-      <h1></h1>
+      <Hero />
     </div>
   );
 }
