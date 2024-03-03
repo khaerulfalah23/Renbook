@@ -1,12 +1,22 @@
-import Link from 'next/link';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 
-export function Login() {
+export function SignUp() {
   return (
-    <dialog id="login" className="modal modal-middle sm:modal-middle">
+    <dialog id="signup" className="modal modal-middle sm:modal-middle">
       <div className="modal-box">
         <form className="card-body" method="dialog">
-          <h3 className="font-bold text-lg">Please Login!</h3>
+          <h3 className="font-bold text-lg">Please Create An Account!</h3>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              name="name"
+              type="name"
+              placeholder="name"
+              className="input input-bordered"
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -28,33 +38,28 @@ export function Login() {
               placeholder="password"
               className="input input-bordered"
             />
-            <label className="label">
-              <Link href="/" className="label-text-alt link link-hover mt-2">
-                Forgot password?
-              </Link>
-            </label>
           </div>
           <div className="form-control mt-4">
             <input
               type="submit"
               className="btn bg-blue text-white"
-              value="Login"
+              value="Sign up"
             />
           </div>
           <div
-            htmlFor="login"
+            htmlFor="signup"
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            onClick={() => document.getElementById('login').close()}
+            onClick={() => document.getElementById('signup').close()}
           >
             ✕
           </div>
           <p className="text-center my-2">
-            Donot have an account?
+            Have an account?
             <button
-              onClick={() => document.getElementById('signup').showModal()}
+              onClick={() => document.getElementById('login').showModal()}
               className="underline text-red ml-1"
             >
-              Signup Now
+              Login here
             </button>
           </p>
         </form>

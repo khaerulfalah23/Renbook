@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FaRegUser } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
-import { Login } from '../auth';
+import { Login, SignUp } from '../auth';
 
 export function NavbarFeature() {
   return (
@@ -25,6 +25,7 @@ export function NavbarFeature() {
         <FaRegUser /> Login
       </button>
       <Login />
+      <SignUp />
     </nav>
   );
 }
