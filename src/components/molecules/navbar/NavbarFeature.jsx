@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FaRegUser } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
+import { Login } from '../auth';
 
 export function NavbarFeature() {
   return (
@@ -18,11 +19,12 @@ export function NavbarFeature() {
       </Link>
 
       <button
-        onClick={() => document.getElementById('my_modal_5').showModal()}
+        onClick={() => document.getElementById('login').showModal()}
         className="btn flex items-center gap-2 rounded-full px-6 bg-blue text-white"
       >
         <FaRegUser /> Login
       </button>
+      <Login />
     </nav>
   );
 }
