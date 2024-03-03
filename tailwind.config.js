@@ -7,12 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        blue: '#89CFF0',
+        red: '#FF6868',
+        secondary: '#555',
+        prigmayBG: '#FCFCFC',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+  },
+  daisyui: {
+    themes: ['light'],
   },
   plugins: [require('daisyui')],
 };
