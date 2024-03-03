@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.subtitle{
+  @apply text-red uppercase tracking-wide font-semibold text-lg;
+}
+
+.title{
+  @apply text-4xl md:text-5xl md:leading-snug font-bold my-2;
+}
