@@ -1,16 +1,32 @@
 'use client';
+import { useState } from 'react';
 import { ButtonModal, Input } from '@/components/atoms';
 import { signUpSchema } from '@/schemas';
 import { Form, Formik } from 'formik';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
+import { db } from '@/firebase/firebase.config';
+import { doc, setDoc } from 'firebase/firestore';
 import useAuth from '@/features/useAuth';
 
 export function SignUp() {
   const { createUser } = useAuth();
-  const onSubmit = (values, actions) => {
-    const { name, email, password } = values;
-    createUser(name, email, password);
-    actions.resetForm();
+  const [errorMessage, setErrorMessage] = useState('');
+  const onSubmit = async (values) => {
+    try {
+      const { name, email, password } = values;
+      const result = await createUser(email, password);
+      const ref = doc(db, 'users', result.user.uid);
+      setDoc(ref, { name })
+        .then(() => {
+          document.getElementById('signup').close();
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } catch (error) {
+      setErrorMessage('Email already in use');
+      console.log(error);
+    }
   };
   return (
     <dialog id="signup" className="modal modal-middle sm:modal-middle">
@@ -24,6 +40,24 @@ export function SignUp() {
         >
           {({ isSubmitting }) => (
             <Form className="card-body">
+              {errorMessage && (
+                <div role="alert" className="alert alert-error">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>{errorMessage}</span>
+                </div>
+              )}
               <h3 className="font-bold text-lg">Please Create An Account!</h3>
               <Input name="name" type="text" label="Name" placeholder="name" />
               <Input

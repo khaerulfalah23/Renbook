@@ -2,8 +2,11 @@ import Link from 'next/link';
 import { FaRegUser } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
 import { Login, SignUp } from '../auth';
+import useAuth from '@/features/useAuth';
+import { NavbarProfile } from '@/components/atoms';
 
 export function NavbarFeature() {
+  const { user } = useAuth();
   return (
     <nav className="navbar-end ">
       <Link href="/">
@@ -18,12 +21,16 @@ export function NavbarFeature() {
         </label>
       </Link>
 
-      <button
-        onClick={() => document.getElementById('login').showModal()}
-        className="btn flex items-center gap-2 rounded-full px-6 bg-blue text-white"
-      >
-        <FaRegUser /> Login
-      </button>
+      {user ? (
+        <NavbarProfile user={user} />
+      ) : (
+        <button
+          onClick={() => document.getElementById('login').showModal()}
+          className="btn flex items-center gap-2 rounded-full px-6 bg-blue text-white"
+        >
+          <FaRegUser /> Login
+        </button>
+      )}
       <Login />
       <SignUp />
     </nav>

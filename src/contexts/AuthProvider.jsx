@@ -8,9 +8,9 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from 'firebase/auth';
-import { app, db } from '../firebase/firebase.config';
-import { doc, setDoc } from 'firebase/firestore';
+import { app } from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -20,31 +20,17 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const createUser = (name, email, password) => {
+  const createUser = (email, password) => {
     setLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (result) => {
-        const ref = doc(db, 'users', result.user.uid);
-        const docref = await setDoc(ref, { name })
-          .then(() => {
-            alert('user created successfully');
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
-      })
-      .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
-          alert('Email already in use');
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const logOut = () => {
+    return signOut(auth);
   };
 
   const signUpWithGoogle = () => {
@@ -68,6 +54,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     login,
+    logOut,
     signUpWithGoogle,
   };
 
