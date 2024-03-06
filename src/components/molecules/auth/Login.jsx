@@ -4,12 +4,13 @@ import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 import { ButtonModal, Input } from '@/components/atoms';
 import { Formik, Form } from 'formik';
 import { loginSchema } from '@/schemas';
-import useAuth from '@/features/useAuth';
+// import useAuth from '@/features/useAuth';
 
 export function Login() {
-  const { login, signUpWithGoogle } = useAuth();
+  // const { login, signUpWithGoogle } = useAuth();
 
   const onSubmit = async (values, actions) => {
+    console.log(values);
     // try {
     //   const { email, password } = values;
     //   alert('Signin successful!');
@@ -19,26 +20,26 @@ export function Login() {
     // }
   };
 
-  const handleGoogle = async () => {
-    try {
-      const result = await signUpWithGoogle();
-      const userInfo = {
-        name: result?.user?.displayName,
-        email: result?.user?.email,
-        photoURL: result?.user?.photoURL,
-      };
-      const res = await fetch('/api/auth/', {
-        method: 'POST',
-        body: JSON.stringify(userInfo),
-      });
-      if (res.ok) {
-        document.getElementById('login').close();
-        alert('Signin successful!');
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleGoogle = async () => {
+  //   try {
+  //     const result = await signUpWithGoogle();
+  //     const userInfo = {
+  //       name: result?.user?.displayName,
+  //       email: result?.user?.email,
+  //       photoURL: result?.user?.photoURL,
+  //     };
+  //     const res = await fetch('/api/auth/', {
+  //       method: 'POST',
+  //       body: JSON.stringify(userInfo),
+  //     });
+  //     if (res.ok) {
+  //       document.getElementById('login').close();
+  //       alert('Signin successful!');
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <dialog id="login" className="modal modal-middle sm:modal-middle">
@@ -87,7 +88,7 @@ export function Login() {
         <ButtonModal label="Donot have an account?" title="Signup Now" />
         <div className="text-center space-x-3 mb-5">
           <button
-            onClick={handleGoogle}
+            // onClick={handleGoogle}
             className="btn btn-circle hover:bg-blue hover:text-white"
           >
             <FaGoogle />

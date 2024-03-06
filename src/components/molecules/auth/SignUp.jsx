@@ -1,69 +1,63 @@
-import { ButtonModal } from '@/components/atoms';
+'use client';
+import { ButtonModal, Input } from '@/components/atoms';
+import { signUpSchema } from '@/schemas';
+import { Form, Formik } from 'formik';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
+import useAuth from '@/features/useAuth';
 
 export function SignUp() {
+  const { createUser } = useAuth();
+  const onSubmit = (values, actions) => {
+    const { name, email, password } = values;
+    createUser(name, email, password);
+    actions.resetForm();
+  };
   return (
     <dialog id="signup" className="modal modal-middle sm:modal-middle">
       <div className="modal-box">
-        <form className="card-body" method="dialog">
-          <h3 className="font-bold text-lg">Please Create An Account!</h3>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              name="name"
-              type="name"
-              placeholder="name"
-              className="input input-bordered"
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              name="email"
-              type="email"
-              placeholder="email"
-              className="input input-bordered"
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <input
-              name="password"
-              type="password"
-              placeholder="password"
-              className="input input-bordered"
-            />
-          </div>
-          <div className="form-control mt-4">
-            <input
-              type="submit"
-              className="btn bg-blue text-white"
-              value="Sign up"
-            />
-          </div>
-          <div
-            htmlFor="signup"
-            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            onClick={() => document.getElementById('signup').close()}
-          >
-            ✕
-          </div>
-          <p className="text-center my-2">
-            Have an account?
-            <button
-              onClick={() => document.getElementById('login').showModal()}
-              className="underline text-red ml-1"
-            >
-              Login here
-            </button>
-          </p>
-        </form>
+        <Formik
+          initialValues={{ name: '', email: '', password: '' }}
+          validationSchema={signUpSchema}
+          validateOnChange={false}
+          validateOnBlur={false}
+          onSubmit={onSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form className="card-body">
+              <h3 className="font-bold text-lg">Please Create An Account!</h3>
+              <Input name="name" type="text" label="Name" placeholder="name" />
+              <Input
+                name="email"
+                type="text"
+                label="Email"
+                placeholder="email"
+              />
+              <Input
+                name="password"
+                type="password"
+                label="Password"
+                placeholder="password"
+              />
+              <div className="form-control mt-4">
+                <button
+                  disabled={isSubmitting}
+                  type="submit"
+                  className="btn bg-blue text-white"
+                >
+                  Sign up
+                </button>
+              </div>
+              <div
+                htmlFor="signup"
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                onClick={() => document.getElementById('signup').close()}
+              >
+                ✕
+              </div>
+            </Form>
+          )}
+        </Formik>
+        <ButtonModal label="Have an account?" title="Login" />
         <div className="text-center space-x-3 mb-5">
           <button className="btn btn-circle hover:bg-blue hover:text-white">
             <FaGoogle />
