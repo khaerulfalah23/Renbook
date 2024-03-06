@@ -1,5 +1,4 @@
 import useAuth from '@/features/useAuth';
-import Image from 'next/image';
 
 export function NavbarProfile({ user }) {
   const { logOut } = useAuth();
@@ -21,21 +20,11 @@ export function NavbarProfile({ user }) {
             htmlFor="my-drawer-4"
             className="drawer-button btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
+            <div className="w-8 rounded-full">
               {user.photoURL ? (
-                <Image
-                  width={225}
-                  height={225}
-                  alt="avatar"
-                  src={user.photoURL}
-                />
+                <img alt="avatar" src={user.photoURL} />
               ) : (
-                <Image
-                  width={225}
-                  height={225}
-                  alt="avatar"
-                  src="/avatar.png"
-                />
+                <img alt="avatar" src="/avatar.png" />
               )}
             </div>
           </label>

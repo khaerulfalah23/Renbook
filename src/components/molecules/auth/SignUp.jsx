@@ -9,14 +9,14 @@ import { doc, setDoc } from 'firebase/firestore';
 import useAuth from '@/features/useAuth';
 
 export function SignUp() {
-  const { createUser } = useAuth();
+  const { createUser, signUpWithGoogle } = useAuth();
   const [errorMessage, setErrorMessage] = useState('');
   const onSubmit = async (values) => {
     try {
       const { name, email, password } = values;
       const result = await createUser(email, password);
       const ref = doc(db, 'users', result.user.uid);
-      setDoc(ref, { name })
+      setDoc(ref, { name, role: 'user' })
         .then(() => {
           document.getElementById('signup').close();
         })
@@ -28,6 +28,25 @@ export function SignUp() {
       console.log(error);
     }
   };
+
+  const handleLoginGoogle = async () => {
+    try {
+      const result = await signUpWithGoogle();
+      const ref = doc(db, 'users', result.user.uid);
+      setDoc(ref, { name: result.user.displayName, role: 'user' })
+        .then(() => {
+          document.getElementById('login').close();
+          setErrorMessage('');
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } catch (error) {
+      setErrorMessage(error.message);
+      console.log(error);
+    }
+  };
+
   return (
     <dialog id="signup" className="modal modal-middle sm:modal-middle">
       <div className="modal-box">
@@ -93,7 +112,10 @@ export function SignUp() {
         </Formik>
         <ButtonModal label="Have an account?" title="Login" />
         <div className="text-center space-x-3 mb-5">
-          <button className="btn btn-circle hover:bg-blue hover:text-white">
+          <button
+            onClick={handleLoginGoogle}
+            className="btn btn-circle hover:bg-blue hover:text-white"
+          >
             <FaGoogle />
           </button>
           <button className="btn btn-circle hover:bg-blue hover:text-white">
