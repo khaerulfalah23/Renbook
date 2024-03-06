@@ -1,3 +1,4 @@
+import { ButtonModal } from '@/components/atoms';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 
 export function SignUp() {
