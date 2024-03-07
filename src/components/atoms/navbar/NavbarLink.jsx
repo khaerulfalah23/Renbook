@@ -10,16 +10,22 @@ export function NavbarLink() {
       </li>
       <li tabIndex={0}>
         <details>
-          <summary>Menu</summary>
+          <summary>Category</summary>
           <ul className="p-2">
             <li>
               <Link href="/menu">All</Link>
             </li>
             <li>
-              <Link href="/menu">Salad</Link>
+              <Link href="/menu">Cook</Link>
             </li>
             <li>
-              <Link href="/menu">Pizza</Link>
+              <Link href="/menu">Medical</Link>
+            </li>
+            <li>
+              <Link href="/menu">Sport</Link>
+            </li>
+            <li>
+              <Link href="/menu">Anthropology</Link>
             </li>
           </ul>
         </details>

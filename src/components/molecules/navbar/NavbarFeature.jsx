@@ -9,20 +9,21 @@ export function NavbarFeature() {
   const { user } = useAuth();
   return (
     <nav className="navbar-end ">
-      <Link href="/">
-        <label
-          tabIndex={0}
-          className="btn btn-ghost btn-circle flex items-center justify-center mr-3"
-        >
-          <div className="indicator mr-1 mt-1">
-            <FiShoppingCart className="w-5 h-5" />
-            <span className="badge badge-sm indicator-item">0</span>
-          </div>
-        </label>
-      </Link>
-
       {user ? (
-        <NavbarProfile user={user} />
+        <>
+          <Link href="/">
+            <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle flex items-center justify-center mr-3"
+            >
+              <div className="indicator mr-1 mt-1">
+                <FiShoppingCart className="w-5 h-5" />
+                <span className="badge badge-sm indicator-item">0</span>
+              </div>
+            </label>
+          </Link>
+          <NavbarProfile user={user} />
+        </>
       ) : (
         <button
           onClick={() => document.getElementById('login').showModal()}
