@@ -1,4 +1,4 @@
-import useAuth from '@/features/useAuth';
+import useAuth from '@/hooks/useAuth';
 
 export function NavbarProfile({ user }) {
   const { logOut } = useAuth();

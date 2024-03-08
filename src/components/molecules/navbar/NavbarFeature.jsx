@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FaRegUser } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
 import { Login, SignUp } from '../auth';
-import useAuth from '@/features/useAuth';
+import useAuth from '@/hooks/useAuth';
 import { NavbarProfile } from '@/components/atoms';
 
 export function NavbarFeature() {

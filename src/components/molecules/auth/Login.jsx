@@ -4,7 +4,7 @@ import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 import { ButtonModal, Input } from '@/components/atoms';
 import { Formik, Form } from 'formik';
 import { loginSchema } from '@/schemas';
-import useAuth from '@/features/useAuth';
+import useAuth from '@/hooks/useAuth';
 import { useState } from 'react';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/firebase/firebase.config';

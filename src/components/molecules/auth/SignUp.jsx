@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik';
 import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa';
 import { db } from '@/firebase/firebase.config';
 import { doc, setDoc } from 'firebase/firestore';
-import useAuth from '@/features/useAuth';
+import useAuth from '@/hooks/useAuth';
 
 export function SignUp() {
   const { createUser, signUpWithGoogle } = useAuth();

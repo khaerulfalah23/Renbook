@@ -8,12 +8,12 @@ export function HeroImage() {
       <div className="flex flex-col md:flex-row items-center justify-around -mt-14 gap-4">
         <Reviews
           title="Atomic Habits"
-          image="/atomichabits.jpg"
+          image="/books/atomichabits.jpg"
           author="James Clear"
         />
         <Reviews
           title="Design Thinking"
-          image="/designthinking.jpg"
+          image="/books/designthinking.jpg"
           author="Prof. Yassierli"
           cn="hidden lg:flex"
         />
