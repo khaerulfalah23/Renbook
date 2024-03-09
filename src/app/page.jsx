@@ -1,8 +1,9 @@
 import {
-  Categories,
   Hero,
+  Categories,
   SpecialBooks,
   Testimonials,
+  OurServices,
 } from '@/components/organisms';
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <Categories />
       <SpecialBooks />
       <Testimonials />
+      <OurServices />
     </div>
   );
 }
