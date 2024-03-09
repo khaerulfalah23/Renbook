@@ -13,3 +13,7 @@
 .heartStar{
   border-radius: 0px 28px 0px 28px;
 }
+
+.section-container{
+  @apply max-w-screen-2xl container mx-auto xl:px-24 px-4
+}

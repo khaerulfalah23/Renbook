@@ -1,4 +1,9 @@
-import { Categories, Hero, SpecialBooks } from '@/components/organisms';
+import {
+  Categories,
+  Hero,
+  SpecialBooks,
+  Testimonials,
+} from '@/components/organisms';
 
 export default function Home() {
   return (
@@ -6,6 +11,7 @@ export default function Home() {
       <Hero />
       <Categories />
       <SpecialBooks />
+      <Testimonials />
     </div>
   );
 }
