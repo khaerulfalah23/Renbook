@@ -1,3 +1,3 @@
 export * from './FooterContent';
-export * from './FooterCopyRight';
+export * from './FooterCopyright';
 export * from './dataFooter';

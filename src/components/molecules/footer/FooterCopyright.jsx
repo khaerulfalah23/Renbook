@@ -1,4 +1,4 @@
-export function FooterCopyRight() {
+export function FooterCopyright() {
   return (
     <footer className="flex justify-center footer xl:px-24 px-4 py-4 mt-2">
       <aside>
