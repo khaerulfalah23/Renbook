@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  @apply bg-gradient-to-r from-0% from-[#FAFAFA] to-[#FCFCFC] to-100%;
+}
+
 .subtitle{
   @apply text-red uppercase tracking-wide font-semibold text-lg;
 }
