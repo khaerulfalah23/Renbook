@@ -9,7 +9,7 @@ export function Cards({ item }) {
           width={288}
           height={288}
           alt={item.name}
-          className="hover:scale-105 cursor-pointer rounded-xl transition-all duration-300 md:h-72"
+          className="hover:scale-105 cursor-pointer rounded-xl transition-all duration-300 md:h-72 h-56"
         />
       </figure>
       <div className="card-body">

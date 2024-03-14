@@ -28,6 +28,9 @@ export const SliderConfig = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        initialSlide: 1,
+        infinite: true,
+        dots: true,
       },
     },
   ],
